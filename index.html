@@ -1,0 +1,87 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>DreamBooth</title>
+<link href="./DreamBooth_files/style.css" rel="stylesheet">
+<script type="text/javascript" src="./DreamBooth_files/jquery.mlens-1.0.min.js"></script> 
+<script type="text/javascript" src="./DreamBooth_files/jquery.js"></script>
+</head>
+
+<body>
+<div class="content">
+  <h1><strong>An Empirical Study and Analysis of Text-to-Image Generation Using Large Language Model-Powered Textual Representation</strong></h1>
+  <p id="authors">
+    <a>Zhiyu Tan</a><sup>1</sup>,
+    <a>Mengping Yang</a><sup>1</sup>,
+    <a>Hao Yang</a><sup>1</sup> ,
+    <br>
+    <a>Ye Qian</a><sup>1</sup>,
+    <a>Luozheng Qin</a><sup>2</sup>,
+    <a>Cheng Zhang</a><sup>3</sup>,
+    <a>Hao Li</a><sup>4&dagger;</sup>
+  <span style="font-size: 16pt;">
+    <br>
+    <sup>1</sup>InfTech,
+    <sup>2</sup>Soochow University,
+    <sup>3</sup>Carnegie Mellon University,
+    <sup>4</sup>Fudan University,
+  <br>
+</span>
+<span style="font-size: 12pt;"><b><sup>&dagger;</sup>Corresponding author & Project leader</b></span>
+  <br><br>
+  <img src="./DreamBooth_files/framework.png" class="teaser-gif" style="width:60%;"><br>
+    <font size="+2">
+          <p style="text-align: center;">
+            <a href="https://arxiv.org/abs/2208.12242" target="_blank">[ECCV Paper]</a> &nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="https://arxiv.org/abs/2208.12242" target="_blank">[Arxiv]</a> &nbsp;&nbsp;&nbsp;&nbsp;
+	          <a href="https://github.com/google/dreambooth" target="_blank">[Code]</a> &nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="DreamBooth_files/bibtex.txt" target="_blank">[BibTeX]</a>
+          </p>
+    </font>
+</div>
+<div class="content">
+  <h2 style="text-align:center;">Abstract</h2>
+  <p>One critical prerequisite for faithful text-to-image generation is the accurate understanding of text inputs. Existing methods leverage the text encoder of the CLIP model to represent input prompts. However, the pre-trained CLIP model can merely encode English with a maximum token length of 77. Moreover, the model capacity of the text encoder from CLIP is relatively limited compared to Large Language Models (LLMs), which offer multilingual input, accommodate longer context, and achieve superior text representation. In this paper, we investigate LLMs as the text encoder to improve the language understanding in text-to-image generation. Unfortunately, training text-to-image generative model with LLMs from scratch demands significant computational resources and data. To this end, we introduce a three-stage training pipeline that effectively and efficiently integrates the existing text-to-image model with LLMs. Specifically, we propose a lightweight adapter that enables fast training of the text-to-image model using the textual representations from LLMs. Extensive experiments demonstrate that our model supports not only multilingual but also longer input context with superior image generation quality.</p>
+</div>
+<div class="content">
+  <h2>Method</h2>
+  <br>
+  <img class="summary-img" src="./DreamBooth_files/stages.png" style="width:100%;"> <br>
+  <p>The main idea of our method is a lightweight but effective adapter module to align the text features of LLMs with that of the visual-aware CLIP. In this way, LLMs could capture the visual clues contained in the input prompts, thereby drive text-to-image diffusion models to produce appropriate images. Specifically, we decompose the training procedure into three distinct stages. First, we adapt the features of LLMs into diffusion training process by aligning them with those from CLIP models, only adapter is optimized in this stage. Then, we improve the synthesis quality through end-to-end text-image training. After that, the aesthetic appeal of the generated images is enhanced by further finetuning on a carefully-curated dataset. By doing so, the textual representation capabilities of LLMs can be fully activated and the model performance is well improved in terms of text alignment, synthesis quality and image aesthetics. Notably, our model is trained with a fraction of the resources required by most text-to-image diffusion models while achieving superior synthesis quality and supporting multilingual input.</p>
+
+  <p>To verify the effectiveness of our proposed model, we conduct extensive empirical investigation on both English and Chinese prompts datasets, it turns out our model achieves favourable zero-shot FID, CLIP-s and Aes scores under various settings. Besides, user studies demonstrate that our model could produce images that are preferred by human. Furthermore, we also conduct various and comprehensive ablation study on the proposed three training stages, which fully confirms the effectiveness of the proposed training pipeline and training stages.</p>
+</div>
+<div class="content">
+  <h2>Results</h2>
+  <p>Our proposed model could not only produce images with high visual quality given <b>English</b> input prompts (left), but also enables <b>multilingual</b> understanding capability for various language driven T2I generation (middle), as well as grasps <b>much longer contextual</b> information for generation (right) </p>
+<img class="summary-img" src="./DreamBooth_files/teaser1.png" style="width:100%;">
+</div>
+<div class="content">
+  <h2>Multilingual T2I Generation</h2>
+  <p>Surprisingly, our model could understand these texts well and generate images with corresponding captions. This amazing feature indicates that our model successfully integrates the powerful language understanding ability of LLMs into the T2I generation process, and fully exploit the potential of LLMs.</p>
+  <br>
+  <img class="summary-img" src="./DreamBooth_files/multilingual.png" style="width:100%;"> <br>
+</div>
+<div class="content">
+  <h2>Long Prompt T2I Generation</h2>
+  <p>Our model could capture the meaning of prompts that are much longer than 77 tokens and synthesize images that well align with prompts, whereas prior methods usually fail under such setting. This further reflects the powerful language understanding capability and synthesis quality of our method.</p>
+  <br>
+  <img class="summary-img" src="./DreamBooth_files/longprompt.png" style="width:100%;"> <br>
+</div>
+<div class="content">
+  <h2>Comparison with Other Baselines</h2>
+  <p>Qualitative comparison of our model and competing methods. For models that do not support multilingual text conditions, we translate the given prompts into corresponding language to generate images. Our proposed method could produce images with better synthesis quality, accurate text-image alignment and higher visual quality.</p>
+  <br>
+  <img class="summary-img" src="./DreamBooth_files/comparison.png" style="width:100%;"> <br>
+</div>
+<div class="content">
+  <h2>BibTex</h2>
+  <code> @article{ruiz2022dreambooth,<br>
+  &nbsp;&nbsp;title={DreamBooth: Fine Tuning Text-to-image Diffusion Models for Subject-Driven Generation},<br>
+  &nbsp;&nbsp;author={Ruiz, Nataniel and Li, Yuanzhen and Jampani, Varun and Pritch, Yael and Rubinstein, Michael and Aberman, Kfir},<br>
+  &nbsp;&nbsp;booktitle={arXiv preprint arxiv:2208.12242},<br>
+  &nbsp;&nbsp;year={2022}<br>
+  } </code> 
+</div>
+</body>
+</html>
