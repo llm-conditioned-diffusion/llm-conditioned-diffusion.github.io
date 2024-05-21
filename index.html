@@ -2,39 +2,41 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>An Empirical Study and Analysis of Text-to-Image Generation Using Large Language Model-Powered Textual Representation</title>
-<link href="./DreamBooth_files/style.css" rel="stylesheet">
-<script type="text/javascript" src="./DreamBooth_files/jquery.mlens-1.0.min.js"></script> 
-<script type="text/javascript" src="./DreamBooth_files/jquery.js"></script>
+<link href="./LLM_Diff_files/style.css" rel="stylesheet">
+<script type="text/javascript" src="./LLM_Diff_files/jquery.mlens-1.0.min.js"></script> 
+<script type="text/javascript" src="./LLM_Diff_files/jquery.js"></script>
 </head>
 
 <body>
 <div class="content">
   <h1><strong>An Empirical Study and Analysis of Text-to-Image Generation Using Large Language Model-Powered Textual Representation</strong></h1>
-  <p id="authors">
-    <a>Zhiyu Tan</a><sup>1</sup>,
-    <a>Mengping Yang</a><sup>1</sup>,
-    <a>Hao Yang</a><sup>1</sup> ,
+  <p id="authors" class="serif">
+    <span style="font-size: 0.9em">
+    <a href="https://scholar.google.com.hk/citations?user=XprTQQ8AAAAJ&hl=en&oi=ao">Zhiyu Tan<sup>1</sup></a>
+    <a href="https://kobeshegu.github.io/">Mengping Yang<sup>1</sup></a>
+    <a href="https://llm-conditioned-diffusion.github.io/">Hao Yang<sup>1</sup></a>
+    <a href="https://llm-conditioned-diffusion.github.io/">Ye Qian<sup>1</sup></a>
+    <a href="https://llm-conditioned-diffusion.github.io/">Luozheng Qin<sup>2</sup></a>
+    <a href="https://czhang0528.github.io/">Cheng Zhang<sup>3</sup></a>
+    <a href="https://scholar.google.com.hk/citations?user=pHN-QIwAAAAJ&hl=en">Hao Li<sup>4&dagger;</sup></a>
+    </span>
     <br>
-    <a>Ye Qian</a><sup>1</sup>,
-    <a>Luozheng Qin</a><sup>2</sup>,
-    <a>Cheng Zhang</a><sup>3</sup>,
-    <a>Hao Li</a><sup>4&dagger;</sup>
-  <span style="font-size: 16pt;">
-    <br>
-    <sup>1</sup>InfTech,
-    <sup>2</sup>Soochow University,
-    <sup>3</sup>Carnegie Mellon University,
-    <sup>4</sup>Fudan University,
+  <span style="font-size: 1.0em; margin-top: 0.6em">
+    <a><sup>1</sup>InfTech</a>
+    <a><sup>2</sup>Soochow University</a>
+    <a><sup>3</sup>Carnegie Mellon University</a>
+    <a><sup>4</sup>Fudan University</a>
   <br>
-</span>
-<span style="font-size: 12pt;"><b><sup>&dagger;</sup>Corresponding author & Project leader</b></span>
-  <br><br>
-  <img src="./DreamBooth_files/framework.png" class="teaser-gif" style="width:60%;"><br>
+  </span>
+<span style="font-size: 12pt;"><b><sup>&dagger;</sup>Corresponding author & Project lead</b></span>
+  </p>
+  <br>
+  <img src="./LLM_Diff_files/framework.png" class="teaser-gif" style="width:60%;"><br>
     <font size="+2">
           <p style="text-align: center;">
-            <a href="https://arxiv.org/abs/2208.12242" target="_blank">[Arxiv]</a> &nbsp;&nbsp;&nbsp;&nbsp;
-	          <a href="https://github.com/google/dreambooth" target="_blank">[Code]</a> &nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="DreamBooth_files/bibtex.txt" target="_blank">[BibTeX]</a>
+            <a href="https://arxiv.org/abs/2405.xxxxx" target="_blank">[Arxiv]</a> &nbsp;&nbsp;&nbsp;&nbsp;
+	          <a href="https://llm-conditioned-diffusion.github.io/" target="_blank">[Code]</a> &nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="LLM_Diff_files/bibtex.txt" target="_blank">[BibTeX]</a>
           </p>
     </font>
 </div>
@@ -45,7 +47,7 @@
 <div class="content">
   <h2>Method</h2>
   <br>
-  <img class="summary-img" src="./DreamBooth_files/stages.png" style="width:100%;"> <br>
+  <img class="summary-img" src="./LLM_Diff_files/stages.png" style="width:100%;"> <br>
   <p>The main idea of our method is a lightweight but effective adapter module to align the text features of LLMs with that of the visual-aware CLIP. In this way, LLMs could capture the visual clues contained in the input prompts, thereby drive text-to-image diffusion models to produce appropriate images. Specifically, we decompose the training procedure into three distinct stages. First, we adapt the features of LLMs into diffusion training process by aligning them with those from CLIP models, only adapter is optimized in this stage. Then, we improve the synthesis quality through end-to-end text-image training. After that, the aesthetic appeal of the generated images is enhanced by further finetuning on a carefully-curated dataset. By doing so, the textual representation capabilities of LLMs can be fully activated and the model performance is well improved in terms of text alignment, synthesis quality and image aesthetics. Notably, our model is trained with a fraction of the resources required by most text-to-image diffusion models while achieving superior synthesis quality and supporting multilingual input.</p>
 
   <p>To verify the effectiveness of our proposed model, we conduct extensive empirical investigation on both English and Chinese prompts datasets, it turns out our model achieves favourable zero-shot FID, CLIP-s and Aes scores under various settings. Besides, user studies demonstrate that our model could produce images that are preferred by human. Furthermore, we also conduct various and comprehensive ablation study on the proposed three training stages, which fully confirms the effectiveness of the proposed training pipeline and training stages.</p>
@@ -53,33 +55,33 @@
 <div class="content">
   <h2>Results</h2>
   <p>Our proposed model could not only produce images with high visual quality given <b>English</b> input prompts (left), but also enables <b>multilingual</b> understanding capability for various language driven T2I generation (middle), as well as grasps <b>much longer contextual</b> information for generation (right) </p>
-<img class="summary-img" src="./DreamBooth_files/teaser1.png" style="width:100%;">
+<img class="summary-img" src="./LLM_Diff_files/teaser1.png" style="width:100%;">
 </div>
 <div class="content">
   <h2>Multilingual T2I Generation</h2>
   <p>Surprisingly, our model could understand these texts well and generate images with corresponding captions. This amazing feature indicates that our model successfully integrates the powerful language understanding ability of LLMs into the T2I generation process, and fully exploit the potential of LLMs.</p>
   <br>
-  <img class="summary-img" src="./DreamBooth_files/multilingual.png" style="width:100%;"> <br>
+  <img class="summary-img" src="./LLM_Diff_files/multilingual.png" style="width:100%;"> <br>
 </div>
 <div class="content">
   <h2>Long Prompt T2I Generation</h2>
   <p>Our model could capture the meaning of prompts that are much longer than 77 tokens and synthesize images that well align with prompts, whereas prior methods usually fail under such setting. This further reflects the powerful language understanding capability and synthesis quality of our method.</p>
   <br>
-  <img class="summary-img" src="./DreamBooth_files/longprompt.png" style="width:100%;"> <br>
+  <img class="summary-img" src="./LLM_Diff_files/longprompt.png" style="width:100%;"> <br>
 </div>
 <div class="content">
   <h2>Comparison with Other Baselines</h2>
   <p>Qualitative comparison of our model and competing methods. For models that do not support multilingual text conditions, we translate the given prompts into corresponding language to generate images. Our proposed method could produce images with better synthesis quality, accurate text-image alignment and higher visual quality.</p>
   <br>
-  <img class="summary-img" src="./DreamBooth_files/comparison.png" style="width:100%;"> <br>
+  <img class="summary-img" src="./LLM_Diff_files/comparison.png" style="width:100%;"> <br>
 </div>
 <div class="content">
   <h2>BibTex</h2>
-  <code> @article{ruiz2022dreambooth,<br>
-  &nbsp;&nbsp;title={DreamBooth: Fine Tuning Text-to-image Diffusion Models for Subject-Driven Generation},<br>
-  &nbsp;&nbsp;author={Ruiz, Nataniel and Li, Yuanzhen and Jampani, Varun and Pritch, Yael and Rubinstein, Michael and Aberman, Kfir},<br>
-  &nbsp;&nbsp;booktitle={arXiv preprint arxiv:2208.12242},<br>
-  &nbsp;&nbsp;year={2022}<br>
+  <code> @article{tan2024llmdiffusion,<br>
+  &nbsp;&nbsp;title={An Empirical Study and Analysis of Text-to-Image Generation Using Large Language Model-Powered Textual Representation},<br>
+  &nbsp;&nbsp;author={Tan, Zhiyu and Yang, Mengping and Yang, Hao and Qian, Ye and Qin, Luozheng and Zhang, Cheng and Li Hao},<br>
+  &nbsp;&nbsp;booktitle={arXiv preprint arxiv:2405.xxxxx},<br>
+  &nbsp;&nbsp;year={2024}<br>
   } </code> 
 </div>
 <div class="content">
