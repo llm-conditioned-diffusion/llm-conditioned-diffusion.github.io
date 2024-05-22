@@ -1,6 +1,6 @@
 @article{tan2024llmdiffusion,
   title={An Empirical Study and Analysis of Text-to-Image Generation Using Large Language Model-Powered Textual Representation},
-  author={Tan, Zhiyu and Yang, Mengping and Yang, Hao and Qian, Ye and Qin, Luozheng and Zhang, Cheng and Li Hao},
-  booktitle={arXiv preprint arxiv:2405.xxxxx},
+  author={Tan, Zhiyu and Yang, Mengping and Qin, Luozheng and Yang, Hao and Qian, Ye and Zhang, Cheng and Li Hao},
+  booktitle={arXiv preprint arxiv:2405.12914},
   year={2024}
 }
